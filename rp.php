@@ -1,5 +1,6 @@
 <?php
 
+$rapBackupFile = file_get_contents('./rapBackupFile');
 $postData = json_decode($rapBackupFile,TRUE);
 $postData['modelJSON'] = str_replace("\'",'\"',$postData['modelJSON']);
 $data = json_decode($postData['modelJSON'],TRUE);
@@ -36,9 +37,4 @@ foreach ($data['moduleList'] as &$module) {
     }
 }
 
-#        echo json_encode($postMan);die;
-$outputFileName = "postman/postman.json";
-file_put_contents($outputFileName,json_encode($postMan));
-$html = "<a href='$outputFileName' download='importPostman.json'>下载postman文件</a>";
-echo $html;
-
+file_put_contents("./postman.json",json_encode($postMan));
