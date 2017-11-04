@@ -1,6 +1,8 @@
 <?php
 
-$rapBackupFile = file_get_contents('./rapBackupFile');
+#$rapBackupFile = file_get_contents('./rapBackupFile');
+#$rapBackupFile = file_get_contents('http://***/api/queryRAPModel.do?projectId=64');
+$rapBackupFile = file_get_contents($argv[1]);
 $postData = json_decode($rapBackupFile,TRUE);
 $postData['modelJSON'] = str_replace("\'",'\"',$postData['modelJSON']);
 $data = json_decode($postData['modelJSON'],TRUE);
